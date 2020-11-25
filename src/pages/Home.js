@@ -1,5 +1,4 @@
 import gql from 'graphql-tag';
-import moment from 'moment';
 import React, { useEffect } from 'react';
 import { Query } from 'react-apollo';
 import Alert from 'react-bootstrap/Alert';
@@ -78,7 +77,7 @@ const ShiftTeamsAlert = () => (
 );
 
 const AVAILABLE_MEMBERS_QUERY = gql`
-  query ($instant: DateTime!) {
+  query ($instant: DateTime) {
     membersAvailable(instant: $instant) {
       number
       fullName
@@ -101,7 +100,7 @@ const MembersCard = () => (
         </Button>
       </LinkContainer>
     </Card.Header>
-    <Query query={AVAILABLE_MEMBERS_QUERY} variables={{ instant: moment().format() }}>
+    <Query query={AVAILABLE_MEMBERS_QUERY}>
       {({ loading, error, data }) => {
         if (loading) {
           return (
