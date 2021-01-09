@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Query } from 'react-apollo';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
@@ -12,6 +12,7 @@ import Spinner from 'react-bootstrap/Spinner';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FaMobileAlt } from 'react-icons/fa';
 
+import Page from '../components/Page';
 import QualificationBadge from '../components/QualificationBadge';
 import RankImage from '../components/RankImage';
 import TeamBadge from '../components/TeamBadge';
@@ -157,12 +158,8 @@ const MembersCard = () => (
   </Card>
 );
 
-const Home = () => {
-  useEffect(() => {
-    document.title = getDocumentTitle('Home');
-  });
-
-  return (
+const Home = () => (
+  <Page title='Availability'>
     <Container className='my-3'>
       <ShiftTeamsAlert />
       <Row>
@@ -171,7 +168,7 @@ const Home = () => {
         </Col>
       </Row>
     </Container>
-  )
-}
+  </Page>
+);
 
 export default Home;
